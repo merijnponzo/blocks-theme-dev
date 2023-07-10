@@ -1,0 +1,87 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "ponzoblocks/grid",
+  "version": "0.1.0",
+  "title": "Grid",
+  "category": "ponzoblocks",
+  "icon": "flag",
+  "description": "A grid block, create grids or sliders",
+  "attributes": {
+    "blockId": {
+      "type": "string"
+    },
+    "slideArrows": {
+      "type": "string",
+      "default": "side"
+    },
+    "slidePagination": {
+      "type": "string",
+      "default": "dots-bottom"
+    },
+    "customFlex": {
+      "type": "array",
+      "default": [
+          {
+            "id": "xl:grid-cols-",
+            "modifier": "cols2",
+            "modifierPrefix": "grid-cols-",
+            "responsive": "xl",
+            "tw": "xl:grid-cols-2",
+            "unit": "2"
+          },
+          {
+            "id": "xl:gap-x-",
+            "modifier": "gapx2",
+            "modifierPrefix": "gap-x-",
+            "responsive": "xl",
+            "tw": "xl:gap-x-16",
+            "unit": "16"
+          },
+          {
+            "id": "xl:gap-y-",
+            "modifier": "gapy2",
+            "modifierPrefix": "gap-y-",
+            "responsive": "xl",
+            "tw": "xl:gap-y-16",
+            "unit": "16"
+          }
+      ]
+    },
+    "customFlexClass": {
+      "type": "string",
+      "default": "xl:grid-cols-2 xl:gap-x-16 xl:gap-y-16"
+    },
+    "gridClass":{
+      "type": "string",
+      "default": ""
+    },
+    "scrollProps": {
+      "type": "object",
+      "default": {
+        "mobile": 0,
+        "tablet": 0,
+        "desktop": 0
+      }
+    }
+  },
+  "supports": {
+    "html": false,
+    "color": {
+      "gradients": true,
+      "link": true,
+      "background": true,
+      "text": true
+    },
+    "dimensions": {
+      "minHeight": true
+    },
+    "spacing": {
+      "margin": true,
+      "padding": true,
+      "blockGap": false
+    }
+  },
+  "textdomain": "ponzoblocks",
+  "editorScript": "file:./index.js"
+}

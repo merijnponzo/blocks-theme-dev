@@ -1,0 +1,103 @@
+@tailwind components;
+@tailwind utilities;
+
+:root{
+    --ponzo--primary: #4D439F;
+}
+
+/* some fixes */
+.components-base-control{
+    @apply w-full;
+}
+.grid--wrapper > * {
+    @apply outline-dashed outline-1 outline-amber-500;
+}
+.components-button.is-primary{
+    background-color: var(--wp-admin-theme-color)!important;
+}
+.wp-block-ponzoblocks-section{
+    @apply w-full;
+    max-width: 100%!important;
+}
+.wp-block-ponzoblocks-advanced-button a{
+	@apply pointer-events-none;
+}
+
+.components-panel__row .components-base-control{
+	@apply w-full;
+}
+/* end fixes */
+
+.ponzo--editor-modal{
+    @apply fixed top-0 left-0 z-50 w-full h-full flex justify-center items-center;
+}
+.ponzo--editor-modalcontent{
+    @apply bg-white rounded-lg shadow-lg p-20 w-[600px] h-[600px] relative;
+}
+.ponzo--editor-modalnav{
+    @apply p-20 w-[590px] h-[40px] relative;
+}
+.ponzo--editor-modalscroll{
+    @apply w-[590px] h-[560px] overflow-scroll relative;
+}
+.ponzo--editor-icon-grid{
+    @apply grid grid-cols-3 gap-4;
+}
+.ponzo--editor-icon{
+    @apply w-[60px] h-[60px] hover:opacity-50 cursor-pointer ring-2 hover:ring-slate-400;
+}
+.ponzo--editor-close-button{
+    @apply absolute top-4 right-4 w-[40px] h-[40px] ring-0 border-0 rounded-full bg-slate-400 text-white flex justify-center items-center cursor-pointer;
+}
+.ponzo--editor-visual{
+    @apply w-[150px] h-[150px] object-cover object-center;
+}
+.ponzo--editor-visual-image img{
+    @apply  mx-auto w-[100px] h-[100px] object-cover object-center bg-slate-200;
+}
+.ponzo--editor-linkwrap{
+    @apply relative;
+}
+.ponzo--editor-linklist{
+    @apply top-[50px] left-0 absolute w-full h-[400px] bg-white overflow-scroll ring-gray-300 ring-1 shadow-sm;
+}
+.ponzo--editor-link{
+    @apply flex flex-col w-full p-8 hover:bg-slate-100 cursor-pointer;
+}
+.ponzo--preview-link{
+    @apply text-xs text-gray-500 truncate;
+}
+.ponzo--tags-wrapper{
+    @apply relative flex flex-col gap-8;
+}
+
+.ponzo--button{
+    @apply my-16 block;
+}
+.ponzo--title{
+    @apply my-4 block border-t-2 border-gray-400;
+}
+.button--unit{
+    @apply m-2;
+}
+.ponzo--heading{
+    @apply uppercase text-blue-600 text-xs mb-8;
+}
+.ponzo--editor-tags{
+    @apply flex flex-wrap gap-2 mb-8;
+}
+.ponzo--editor-tag{
+    font-size: 15px;
+    @apply text-black p-6 m-2 cursor-pointer border bg-yellow-100 border-gray-500 hover:opacity-70 list-none mb-0 select-none rounded-xl;
+}
+.ponzo--editor-tag.tag--small{
+    font-size: 13px;
+    @apply px-6 py-2 bg-opacity-70;
+}
+.ponzo--editor-tag.active{
+    background-color: var(--ponzo--primary)!important;
+   color:white;
+}
+.editor-styles-wrapper:not(.wp-admin) .menu--overlay{
+    display: none!important;
+}

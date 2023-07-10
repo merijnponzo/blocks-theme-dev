@@ -1,0 +1,244 @@
+@tailwind components;
+@tailwind utilities;
+/* align center */
+.wp-block.aligncenter, .aligncenter{
+    @apply mx-auto;
+}
+.wp-block-columns :where(.wp-block.aligncenter){
+    @apply mx-auto;
+}
+
+/* PONZO VISUAL */
+.wp-block-ponzoblocks-visual{
+    img{
+        @apply w-full h-full;
+    }
+}
+
+/* PONZO SECTION */
+.wp-block-ponzoblocks-section{
+    @apply  relative overflow-hidden;
+    .section--content{
+        @apply  relative z-10;
+    }
+}
+.responsive-video{
+     @apply w-screen h-full absolute top-0 left-0 object-cover;
+}
+
+/* make sure groups are relative for tile links */
+.wp-block-group{
+    @apply relative;
+}
+a.tile{
+    @apply after:content-[''] after:absolute after:top-0 after:left-0 after:w-full after:h-full after:z-10 ;
+}
+a.tile:hover{
+    @apply after:bg-slate-200 after:mix-blend-multiply after:bg-opacity-25;
+}
+
+    
+/* PONZO GRID BLOCK */
+@layer components {
+    .snap-slide {
+        @apply flex snap-start relative overflow-x-scroll snap-mandatory snap-x;
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE and Edge */
+    }
+    .svg-sizer-1{
+        width:var(--wp--preset--spacing--1);
+        height:var(--wp--preset--spacing--1);
+    }
+    .svg-sizer-2{
+        width:var(--wp--preset--spacing--2);
+        height:var(--wp--preset--spacing--2);
+    }
+    .svg-sizer-3{
+        width:var(--wp--preset--spacing--3);
+        height:var(--wp--preset--spacing--3);
+    }
+    .svg-sizer-4{
+        width:var(--wp--preset--spacing--4);
+        height:var(--wp--preset--spacing--4);
+    }
+    .svg-sizer-5{
+        width:var(--wp--preset--spacing--5);
+        height:var(--wp--preset--spacing--5);
+    }
+    .svg-sizer-6{
+        width:var(--wp--preset--spacing--6);
+        height:var(--wp--preset--spacing--6);
+    }
+    .svg-sizer-7{
+        width:var(--wp--preset--spacing--7);
+        height:var(--wp--preset--spacing--7);
+    }
+    .svg-sizer-8{
+        width:var(--wp--preset--spacing--8);
+        height:var(--wp--preset--spacing--8);
+    }
+    .svg-sizer-9{
+        width:var(--wp--preset--spacing--9);
+        height:var(--wp--preset--spacing--9);
+    }
+    .svg-sizer-10{
+        width:var(--wp--preset--spacing--10);
+        height:var(--wp--preset--spacing--10);
+    }
+}
+
+/* we create grid-- like classes because otherwise it would be overwritten fromout inline */
+
+/*
+.scrollslide--mobile.grid-cols-2  > *{
+    @apply w-1/2;
+}
+.scrollslide--mobile.grid-cols-1 > *{
+    @apply w-full;
+}
+*/
+
+@screen xs{
+    .grid--mobile{
+        @apply grid;
+    }
+    .scrollslide--mobile  {  
+        @apply snap-slide;
+    }
+    .scrollslide--mobile > *{
+        @apply shrink-0 ;
+    }
+    .scrollslide--mobile > *{
+        @apply shrink-0 snap-start;
+    }
+    .grid--mobile + .scrollslide--nav {
+        @apply hidden;
+    }
+    .scrollslide--mobile + .scrollslide--nav {
+        @apply flex;
+    }
+}
+
+@screen md {
+    .grid--tablet{
+        @apply grid;
+    }
+    .grid--tablet + .scrollslide--nav{
+        @apply hidden;
+    }
+    .scrollslide--tablet  {  
+        @apply snap-slide;
+    }
+    .scrollslide--tablet + .scrollslide--nav {
+        @apply flex;
+    }
+    .scrollslide--tablet > *{
+        @apply shrink-0 snap-start;
+    }
+    .scrollslide--tablet > *{
+        @apply shrink-0 ;
+    }
+    /*
+    .scrollslide--tablet.md\:grid-cols-2 > *{
+        @apply w-1/2;
+    }
+    .scrollslide--tablet.md\:grid-cols-1 > *{
+        @apply w-full;
+    }
+    .scrollslide--tablet.md\:grid-cols-3 > *{
+        @apply w-1/3;
+    }
+    */
+}
+
+@screen xl{
+    .grid--desktop{
+        @apply grid;
+    }
+    .grid--desktop + .scrollslide--nav{
+        @apply hidden;
+    }
+    .scrollslide--desktop  {  
+        @apply snap-slide;
+    }
+    .scrollslide--desktop + .scrollslide--nav {
+        @apply flex;
+    }
+    .scrollslide--desktop > *{
+        @apply shrink-0 snap-start;
+    }
+    /*
+    .scrollslide--desktop.xl\:grid-cols-5 > *{
+        @apply w-1/5;
+    }
+    .scrollslide--desktop.xl\:grid-cols-4 > *{
+        @apply w-1/4;
+    }
+    .scrollslide--desktop.xl\:grid-cols-3 > *{
+        @apply w-1/3;
+    }
+    .scrollslide--desktop.xl\:grid-cols-2 > *{
+        @apply w-1/2;
+    }
+    .scrollslide--desktop.xl\:grid-cols-1 > *{
+        @apply w-full;
+    }
+    */
+    .scrollslide--desktop + .scrollslide__nav{
+        @apply flex;
+    }
+}
+
+
+.wp-block-ponzoblocks-icon svg{
+    @apply w-full h-full;
+}
+
+/* PONZO COUNTER */ 
+.wp-block-ponzoblocks-counter{
+	line-height: 1;
+}
+
+.svg-size-1{
+    @apply svg-sizer-1;
+}
+.svg-size-2{
+    @apply svg-sizer-2;
+}
+.svg-size-3{
+    @apply svg-sizer-3;
+}
+.svg-size-4{
+    @apply svg-sizer-4;
+}
+.svg-size-5{
+    @apply svg-sizer-5;
+}
+.svg-size-6{
+    @apply svg-sizer-6;
+}
+.svg-size-7{
+    @apply svg-sizer-7;
+}
+.svg-size-8{
+    @apply svg-sizer-8;
+}
+.svg-size-9{
+    @apply svg-sizer-9;
+}
+.svg-size-10{
+    @apply svg-sizer-10;
+}
+
+
+
+/* PONZO ADVANCED BUTTON */
+.wp-block-ponzoblocks-advanced-button{
+	font-size: var(--wp--preset--font-size--normal);
+	svg{
+        @apply svg-sizer-2;
+	}
+}
+
+
