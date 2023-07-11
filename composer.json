@@ -1,5 +1,6 @@
 {
     "name": "herewegostudio/blockstheme",
+    "type": "blocks-theme",
     "version": "1.0",
     "autoload": {
         "psr-4": {
