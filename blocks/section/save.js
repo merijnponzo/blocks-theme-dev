@@ -8,14 +8,19 @@ import ResponsiveImage from "../../helpers/responsiveImage";
 import ResponsiveVideo from "../../helpers/responsiveVideo";
 
 export default function save({ attributes }) {
-  const blockProps = useBlockProps.save();
   const {
     hasContainer,
     hasEqualColumns,
     hasCenteredContent,
     media,
     imageClass,
+    pageId,
   } = attributes;
+
+  const blockProps = useBlockProps.save(
+    {className: pageId ? "style-" + pageId : null}
+  );
+
 
   const hasContainerClass = hasContainer ? "container mx-auto" : "w-full";
   const hasEqualColumnsClass = hasEqualColumns

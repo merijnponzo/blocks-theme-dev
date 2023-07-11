@@ -219,7 +219,7 @@ class Ponzoblocks
             }
         }
 
-        foreach ($posts as $post) {
+        foreach ($posts as $post) {           
             $css .= get_post_meta($post, 'tailwindcss', true);
         }
         // echo $css within <style>
@@ -229,8 +229,6 @@ class Ponzoblocks
     // function to minify CSS file
     public static function minifyCSS($input)
     {
-
-
         // remove comments
         $output = preg_replace('!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $input);
         // remove whitespace

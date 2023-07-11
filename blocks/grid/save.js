@@ -8,6 +8,8 @@ export default function save({ attributes }) {
   const { blockId, customFlexClass, gridClass, slideArrows, slidePagination } = attributes;
 
   const blockProps = useBlockProps.save();
+
+
   // set innerBlockProps classes
   const { children, ...innerBlocksProps } = useInnerBlocksProps.save({
     className: `${gridClass} h-full z-10 ${customFlexClass}`,

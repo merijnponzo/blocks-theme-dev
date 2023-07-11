@@ -14,6 +14,10 @@
         @apply w-full h-full;
     }
 }
+/* Grid */
+.wp-block-ponzoblocks-grid{
+    @apply w-full;
+}
 
 /* PONZO SECTION */
 .wp-block-ponzoblocks-section{

@@ -5,6 +5,10 @@ const tailwindCss = require("./tailwind.cdn.min.js");
 const configParser = require("../../blocks-theme-dev/tailwind/theme-parser.js");
 const themeJson = require("../../theme.json");
 // document onload listener
+
+
+
+
 document.addEventListener("DOMContentLoaded", function () {
   if (typeof wp !== "undefined") {
     if (wp.data !== undefined) {
@@ -28,6 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
          */
 
+      
         if (isAutosavingPost && !isSavingPost) {
           return;
         } else if (isSavingPost && !isAutosavingPost) {
@@ -40,8 +45,15 @@ document.addEventListener("DOMContentLoaded", function () {
           } else {
             post_id = wp.data.select("core/editor").getCurrentPostId();
           }
-
-          createTailwind(content).then((css) => {
+          
+          const currentPostType = wp.data.select("core/editor").getCurrentPostType();
+          // if is reusable block we are going to prefix tailwind to prevent style overwrites
+          let prefix = false;
+          if (currentPostType === "wp_block") {
+             prefix = ".style-" + post_id;
+          }
+          
+          createTailwind(content, prefix).then((css) => {
             fetch("/wp-json/ponzoblocks/v1/save-styles", {
               method: "POST",
               headers: {
@@ -57,15 +69,17 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         // Do action.
       });
-      createTailwind();
+      // createTailwind();
     }
   }
 });
 
-async function createTailwind(content) {
+async function createTailwind(content, prefix) {
   // get config from theme.json
   const config = configParser.tailwindTheme(themeJson, false);
-  const configResult = createConfig(config);
+  const configResult = createConfig(config, prefix);
+
+  console.log(configResult, content)
 
   const tailwind = await window.createTailwindcss({
     tailwindConfig: configResult,
@@ -83,12 +97,12 @@ async function createTailwind(content) {
 }
 
 // create config
-function createConfig(configResult) {
-
-  console.log(configResult.screens);
-
+function createConfig(configResult, prefix) {
   // create config - should match tailwind.config.js in theme
+
+
   return {
+    important: prefix,
     theme: {
       fontFamily: {
         ...configResult.fonts,

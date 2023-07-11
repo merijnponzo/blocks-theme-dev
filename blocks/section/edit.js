@@ -15,9 +15,12 @@ import ResponsiveVideo from "../../helpers/responsiveVideo";
 
 import { PonzoImageSmall } from "../../assets/PonzoIcons";
 
-export default function Edit({ attributes, setAttributes }) {
-  const blockProps = useBlockProps();
+// useEffect
+import { useEffect } from "@wordpress/element";
 
+export default function Edit({ attributes, setAttributes }) {
+
+  
   const {
     media,
     imageProps,
@@ -25,7 +28,18 @@ export default function Edit({ attributes, setAttributes }) {
     hasContainer,
     hasEqualColumns,
     hasCenteredContent,
+    pageId,
   } = attributes;
+
+  // set page id, this will be used for reusable blocks with a tailwind stragegy (classprefix)
+  useEffect(() => {
+    // get the pageId
+    const getPageId = wp.data.select("core/editor").getCurrentPostId();
+    if(pageId === null) {
+      setAttributes({ pageId: getPageId });
+    }
+
+  }, []);
 
   const toggleContainer = () => {
     setAttributes({ hasContainer: !hasContainer });
@@ -62,7 +76,7 @@ export default function Edit({ attributes, setAttributes }) {
   const customClass = [
     "section--content",
     hasContainerClass,
-    hasCenteredContentClass,
+    hasCenteredContentClass
   ];
 
   const customClasses = customClass.join(" ");
@@ -70,6 +84,11 @@ export default function Edit({ attributes, setAttributes }) {
   const { children, ...innerBlocksProps } = useInnerBlocksProps({
     className: customClasses,
   });
+
+  const blockProps = useBlockProps(
+    {className: pageId ? "style-" + pageId : null}
+  );
+
 
   return (
     <section {...blockProps}>
