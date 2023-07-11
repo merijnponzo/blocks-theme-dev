@@ -1,0 +1,16 @@
+{
+    "name": "herewegostudio/blockstheme",
+    "version": "1.0",
+    "autoload": {
+        "psr-4": {
+            "Herewegostudio\\Blockstheme\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Merijn",
+            "email": "merijn@ponzo.nl"
+        }
+    ],
+    "require": {}
+}
